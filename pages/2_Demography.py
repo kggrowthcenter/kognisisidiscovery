@@ -27,7 +27,8 @@ selected_platform = st.sidebar.selectbox('Select Platform', platform_options)
 unit_options = sorted(df_merged['unit'].unique().tolist())
 selected_unit = st.sidebar.multiselect('Select Unit', unit_options)
 
-layer_options = sorted(df_merged['layer'].unique().tolist())
+layer_options = sorted(df_merged['layer'].astype(str).unique().tolist())
+#layer_options = sorted(df_merged['layer'].unique().tolist())
 selected_layer = st.sidebar.multiselect('Select Layer', layer_options)
 
 status_options = ['All'] + sorted(df_merged['status_learner'].unique().tolist())
