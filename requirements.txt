@@ -1,0 +1,13 @@
+streamlit
+pandas
+altair
+pymysql
+sshtunnel
+gspread
+oauth2client
+paramiko
+datetime
+toml
+plotly
+folium
+matplotlip
