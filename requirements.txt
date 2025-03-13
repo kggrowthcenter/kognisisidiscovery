@@ -10,4 +10,4 @@ datetime
 toml
 plotly
 folium
-matplotlip
+matplotlib
