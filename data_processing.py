@@ -28,7 +28,7 @@ def fetch_discovery_au_data():
 
 @st.cache_data
 def fetch_sap_data():
-    selected_columns = ['name_sap', 'email', 'nik', 'unit', 'subunit', 'admin_hr', 'layer', 'generation', 'gender', 'division', 'department']
+    selected_columns = ['name_sap', 'email', 'nik', 'unit', 'subunit', 'admin_hr', 'layer', 'generation', 'gender', 'division', 'department', 'tenure']
     df_sap = fetch_data_sap(selected_columns)
     df_sap['email'] = df_sap['email'].str.strip().str.lower()
     df_sap['nik'] = df_sap['nik'].astype(str).str.zfill(6)

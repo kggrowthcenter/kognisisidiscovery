@@ -79,6 +79,28 @@ selected_units = st.sidebar.multiselect(
 if selected_units:
     df_filtered = df_filtered[df_filtered['unit'].isin(selected_units)]
 
+# Add subunit filter to the sidebar
+selected_subunits = st.sidebar.multiselect(
+    "Select Subunit",
+    options=df_filtered['subunit'].unique(),
+    default=[]
+)
+
+# Apply unit filter if units are selected
+if selected_subunits:
+    df_filtered = df_filtered[df_filtered['subunit'].isin(selected_subunits)]
+
+# Add years filter to the sidebar
+selected_years = st.sidebar.multiselect(
+    "Select Years",
+    options=df_filtered['tenure'].unique(),
+    default=[]
+)
+
+# Apply unit filter if units are selected
+if selected_years:
+    df_filtered = df_filtered[df_filtered['tenure'].isin(selected_years)]
+
 # Active learners by bundle
 bundle_names = ['GI', 'LEAN', 'ELITE', 'Genuine', 'Astaka']
 
