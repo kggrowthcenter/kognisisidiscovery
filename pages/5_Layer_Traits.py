@@ -55,7 +55,7 @@ layer_mapping = {
 }
 
 # Apply the mapping to create a new column for grouped layers
-internal_df['layer_group'] = internal_df['layer'].map(layer_mapping)
+internal_df.loc[:, 'layer_group'] = internal_df['layer'].map(layer_mapping)
 
 # Sidebar filters with multiselect
 st.sidebar.header("Filter Options")
@@ -267,7 +267,9 @@ highest_scores = genuine_filtered.loc[genuine_filtered.groupby(['email', 'last_u
 genuine_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']]
 
 # Add a rank column from 1 to 9 based on total_score for each Customer ID and Test Date
-genuine_active_learners_data['rank'] = genuine_active_learners_data.groupby(['Customer ID', 'last_updated'])['total_score'].rank(ascending=False, method='first').astype(int)
+genuine_active_learners_data.loc[:, 'rank'] = genuine_active_learners_data.groupby(
+    ['Customer ID', 'last_updated']
+)['total_score'].rank(ascending=False, method='first').astype(int)
 
 # Filter ranks from 1 to 9
 genuine_active_learners_data = genuine_active_learners_data[genuine_active_learners_data['rank'] <= 9]
@@ -329,7 +331,9 @@ highest_scores = astaka_filtered.loc[astaka_filtered.groupby(['email', 'last_upd
 astaka_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']]
 
 # Add a rank column from 1 to 6 based on total_score for each Customer ID and Test Date
-astaka_active_learners_data['rank'] = astaka_active_learners_data.groupby(['Customer ID', 'last_updated'])['total_score'].rank(ascending=False, method='first').astype(int)
+astaka_active_learners_data.loc[:, 'rank'] = astaka_active_learners_data.groupby(
+    ['Customer ID', 'last_updated']
+)['total_score'].rank(ascending=False, method='first').astype(int)
 
 # Filter ranks from 1 to 6
 astaka_active_learners_data = astaka_active_learners_data[astaka_active_learners_data['rank'] <= 6]
