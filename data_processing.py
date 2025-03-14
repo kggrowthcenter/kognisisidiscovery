@@ -43,6 +43,7 @@ def fetch_capture_data():
     df_capture_sheet1 = fill_empty_with_na(df_capture_sheet1)
     df_capture_sheet2 = fill_empty_with_na(df_capture_sheet2)
     df_capture_sheet3 = fill_empty_with_na(df_capture_sheet3)
+    df_capture_sheet3['done_at'] = pd.to_datetime(df_capture_sheet3['done_at'], format="%Y-%m-%d", errors='coerce').dt.date
     return df_capture_sheet1, df_capture_sheet2, df_capture_sheet3
 
 @st.cache_data

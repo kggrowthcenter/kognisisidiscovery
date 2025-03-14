@@ -201,7 +201,7 @@ breakdown_mapping = {
 }
 
 # Clean data in the Company column
-filtered_df['Company'] = filtered_df['Company'].replace(
+filtered_df.loc[:, 'Company'] = filtered_df['Company'].replace(
     ['-', '.', '0', 'n/a', 'N/a', 'NA'], 'N/A', regex=False
 )
 
