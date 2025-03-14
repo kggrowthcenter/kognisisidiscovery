@@ -6,9 +6,7 @@ sshtunnel
 gspread
 oauth2client
 paramiko
-datetime
 toml
 plotly
 folium
 matplotlib
-python==3.11.11
