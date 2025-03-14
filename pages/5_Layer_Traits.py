@@ -54,6 +54,9 @@ layer_mapping = {
 
 }
 
+# Pastikan sebelum ada modifikasi, kita copy dulu datanya
+internal_df = internal_df.copy()
+
 # Apply the mapping to create a new column for grouped layers
 internal_df.loc[:, 'layer_group'] = internal_df['layer'].map(layer_mapping)
 
@@ -266,6 +269,8 @@ highest_scores = genuine_filtered.loc[genuine_filtered.groupby(['email', 'last_u
 # Select relevant columns for the genuine active learners data
 genuine_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']]
 
+genuine_active_learners_data = genuine_active_learners_data.copy()
+
 # Add a rank column from 1 to 9 based on total_score for each Customer ID and Test Date
 genuine_active_learners_data.loc[:, 'rank'] = genuine_active_learners_data.groupby(
     ['Customer ID', 'last_updated']
@@ -329,6 +334,8 @@ highest_scores = astaka_filtered.loc[astaka_filtered.groupby(['email', 'last_upd
 
 # Select relevant columns for the genuine active learners data
 astaka_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']]
+
+astaka_active_learners_data = astaka_active_learners_data.copy()
 
 # Add a rank column from 1 to 6 based on total_score for each Customer ID and Test Date
 astaka_active_learners_data.loc[:, 'rank'] = astaka_active_learners_data.groupby(
