@@ -11,3 +11,4 @@ toml
 plotly
 folium
 matplotlib
+pyhton==3.11.11
