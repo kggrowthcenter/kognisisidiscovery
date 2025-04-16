@@ -458,7 +458,7 @@ if selected_platform == 'Discovery':
 
         # Get highest scores
         highest_scores = genuine_filtered.loc[genuine_filtered.groupby(['email', 'last_updated', 'Test Name'])['total_score'].idxmax()]
-        genuine_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']]
+        genuine_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']].copy()
 
         # Add a rank column from 1 to 9 based on total_score for each Customer ID and Test Date
         genuine_active_learners_data['rank'] = genuine_active_learners_data.groupby(['Customer ID', 'last_updated'])['total_score'].rank(ascending=False, method='first').astype(int)
@@ -486,7 +486,7 @@ if selected_platform == 'Discovery':
 
         # Get highest scores
         highest_scores = astaka_filtered.loc[astaka_filtered.groupby(['email', 'last_updated', 'Test Name'])['total_score'].idxmax()]
-        astaka_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']]
+        astaka_active_learners_data = highest_scores[['name', 'email', 'Customer ID', 'title', 'last_updated', 'Test Name', 'total_score', 'final_result']].copy()
 
         # Add a rank column from 1 to 6 based on total_score for each Customer ID and Test Date
         astaka_active_learners_data['rank'] = astaka_active_learners_data.groupby(['Customer ID', 'last_updated'])['total_score'].rank(ascending=False, method='first').astype(int)
