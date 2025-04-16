@@ -61,16 +61,16 @@ with col1:
 
 with col2:
     if st.button('This Year'):
-        current_year = datetime.datetime.now().year
-        st.session_state.from_date = datetime.datetime(current_year, 1, 1).date()
-        st.session_state.to_date = min(datetime.datetime.now().date(), max_value)
+        current_year = datetime.now().year
+        st.session_state.from_date = datetime(current_year, 1, 1).date()
+        st.session_state.to_date = min(datetime.now().date(), max_value)
 
 with col3:
     if st.button('This Month'):
-        current_year = datetime.datetime.now().year
-        current_month = datetime.datetime.now().month
-        st.session_state.from_date = datetime.datetime(current_year, current_month, 1).date()
-        st.session_state.to_date = min(datetime.datetime.now().date(), max_value)
+        current_year = datetime.now().year
+        current_month = datetime.now().month
+        st.session_state.from_date = datetime(current_year, current_month, 1).date()
+        st.session_state.to_date = min(datetime.now().date(), max_value)
 
 # Validasi nilai tanggal untuk menghindari input yang tidak valid
 from_date, to_date = st.date_input(
